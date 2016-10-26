@@ -1,4 +1,5 @@
 # prefixeddict
+[![Build Status](https://travis-ci.org/martinjungblut/prefixeddict.svg?branch=master)](https://travis-ci.org/martinjungblut/prefixeddict)
 
 ## why?
 Sometimes you have a single dict-like object that will be used in multiple places, and you don't want one operation to redefine the values that were already set by another operation. So you use prefixes! The goal of this library it to make this as painless as possible.
@@ -19,4 +20,4 @@ Sometimes you have a single dict-like object that will be used in multiple place
 50
 ```
 
-Available for Python 2.6+ and 3.2+. Simply run `pip install prefixeddict`.
+Python 2.6+ and 3.2+ are supported. Simply run `pip install prefixeddict`.
