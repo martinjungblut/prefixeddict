@@ -4,21 +4,17 @@ class PrefixedDict(object):
     prefix.
     """
 
-    def __init__(self, prefix, dictionary={}):
+    def __init__(self, prefix, dictionary):
         """
         Args:
             prefix (str): the prefix you want to apply to the dictionary's
                           keys.
             dictionary (dict-like): the actual dictionary-like object which will
-                                    be used to store data. It's automatically
-                                    copied, so as not so fiddle with the
-                                    original one. Defaults to a new, empty
-                                    dictionary.
+                                    be used to store data.
         """
 
         self.prefix = prefix + '-'
-        self.dictionary = {self.prefix + key: value
-                           for key, value in dictionary.items()}
+        self.dictionary = dictionary
 
     def __setitem__(self, key, value):
         self.dictionary[self.prefix + key] = value
