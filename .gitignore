@@ -1,0 +1,6 @@
+*.pyc
+.cache
+.coverage
+Makefile
+__pycache__
+virtenv
