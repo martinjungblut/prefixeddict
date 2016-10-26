@@ -18,3 +18,5 @@ Sometimes you have a single dict-like object that will be used in multiple place
 >>> bar['age']
 50
 ```
+
+Available for Python 2.6+ and 3.2+. Simply run `pip install prefixeddict`.
