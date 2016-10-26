@@ -10,13 +10,13 @@ Sometimes you have a single dict-like object that will be used in multiple place
 >>> my_dictionary = {}
 >>> foo_prefixed = PrefixedDict('foo', my_dictionary)
 >>> bar_prefixed = PrefixedDict('bar', my_dictionary)
->>> foo['age'] = 30
->>> bar['age'] = 50
+>>> foo_prefixed['age'] = 30
+>>> bar_prefixed['age'] = 50
 >>> my_dictionary
 {'foo-age': 30, 'bar-age': 50}
->>> foo['age']
+>>> foo_prefixed['age']
 30
->>> bar['age']
+>>> bar_prefixed['age']
 50
 ```
 
