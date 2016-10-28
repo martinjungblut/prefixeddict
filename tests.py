@@ -127,3 +127,28 @@ class TestPrefixedDict(unittest.TestCase):
 
         self.assertEqual(set(prefixed.keys()),
                          set([key for key in prefixed]))
+
+    def test_clear(self):
+        dictionary = {'age': 30, 'name': 'john'}
+
+        foo_prefixed = PrefixedDict('foo', dictionary)
+        bar_prefixed = PrefixedDict('bar', dictionary)
+
+        foo_prefixed['country'] = 'germany'
+        foo_prefixed['email'] = 'peter@gmail.com'
+
+        bar_prefixed['gender'] = 'male'
+        bar_prefixed['city'] = 'berlin'
+
+        foo_prefixed.clear()
+
+        self.assertEqual(dict(foo_prefixed), {})
+
+        self.assertEqual(dict(bar_prefixed),
+                         {'gender': 'male', 'city': 'berlin'})
+
+        self.assertEqual(dict(dictionary),
+                         {'age': 30,
+                          'name': 'john',
+                          'bar-gender': 'male',
+                          'bar-city': 'berlin'})

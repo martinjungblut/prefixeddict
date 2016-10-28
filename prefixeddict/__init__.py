@@ -29,19 +29,26 @@ class PrefixedDict(object):
     def __getitem__(self, key):
         return self.dictionary[self.prefix + '-' + key]
 
+    def __delitem__(self, key):
+        del self.dictionary[self.prefix + '-' + key]
+
     def __contains__(self, key):
         return (self.prefix + '-' + key) in self.dictionary
 
     def keys(self):
-        for key in self.dictionary.keys():
+        for key in self.dictionary:
             if key.startswith(self.prefix + '-'):
                 yield key.replace(self.prefix + '-', '')
 
     def values(self):
-        for key in self.keys():
+        for key in self:
             yield self[key]
 
     def items(self):
         return lazyzip(self.keys(), self.values())
+
+    def clear(self):
+        for key in list(self):
+            del self[key]
 
     __iter__ = keys
