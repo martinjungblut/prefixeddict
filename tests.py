@@ -152,3 +152,29 @@ class TestPrefixedDict(unittest.TestCase):
                           'name': 'john',
                           'bar-gender': 'male',
                           'bar-city': 'berlin'})
+
+    def test_del(self):
+        dictionary = {'age': 30, 'name': 'john'}
+
+        foo_prefixed = PrefixedDict('foo', dictionary)
+        bar_prefixed = PrefixedDict('bar', dictionary)
+
+        foo_prefixed['country'] = 'netherlands'
+        bar_prefixed['email'] = 'john@gmail.com'
+
+        with self.assertRaises(KeyError):
+            del foo_prefixed['age']
+
+        with self.assertRaises(KeyError):
+            del bar_prefixed['age']
+
+        self.assertTrue('country' in foo_prefixed)
+        del foo_prefixed['country']
+        self.assertFalse('country' in foo_prefixed)
+
+        self.assertTrue('email' in bar_prefixed)
+        del bar_prefixed['email']
+        self.assertFalse('email' in bar_prefixed)
+
+        self.assertEqual(dictionary['age'], 30)
+        self.assertEqual(dictionary['name'], 'john')
