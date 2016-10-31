@@ -23,5 +23,6 @@ Install it: `pip install prefixeddict`
 ```
 
 ## implementation details
-This library is fully lazy in order to guarantee memory efficiency.
+This library is mostly lazy in order to improve memory allocation efficiency.
 The keys(), values(), items() and \_\_iter\_\_() methods actually return iterators, not lists or another eager data structure.
+The only method that currently uses an eager operation is clear().
